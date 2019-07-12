@@ -13,13 +13,38 @@ Input: heights of trees below:
 Output:
 `169.375`
 
+```swift
+var heights: [Double] = [161, 182, 161, 154, 176, 170, 167, 171, 170, 174]
+var heightsSet: Set<Double> = Set(heights)
+var container: Double = 0
 
+for i in heightsSet{
+    container = container + i
+}
+container = container/Double(heightsSet.count)
+print(container)
+```
 ## Question 2
 
 Determine if a String is a pangram. A pangram is a string that contains every letter of the alphabet at least once.
 
  e.g `"The quick brown fox jumps over the lazy dog"` is a pangram
  e.g `"The quick brown fox jumped over the lazy dog"` is NOT a pangram
+ 
+ ```swift
+ var sentence = "the quick brown fox jumped over the lazy dog"
+ var alphabet = "abcdefghijklmnopqrstuvwxyz"
+ var alphabetSet = Set(alphabet)
+ var sentenceSet = Set(sentence)
+ var subtract = alphabetSet.subtracting(sentenceSet)
+ 
+ 
+ if String(subtract) == " " {
+    print("Pangram")
+ } else {
+    print("Not Pangram")
+ }
+ ```
 
 
 ## Question 3
@@ -40,6 +65,27 @@ You are given an array `nums` representing the data status of the set S after th
  Input: `nums = [2,2]`
  Output: `[2,1]`
 
+```swift
+let nums = [1,2,2,4]
+var numSet: Set<Int> = Set(nums)
+var peSet: Set<Int> = [1,2,3,4]
+var duplicate = 0
+var missingNum = peSet.subtracting(numSet)
+var dupAndMissingNum: [Int] = []
+
+for i in nums {
+    if duplicate == i {
+        break
+    }
+    duplicate = i
+}
+for i in missingNum {
+    upAndMissingNum.append(i)
+    dupAndMissingNum.append(duplicate)
+}
+
+print(dupAndMissingNum.sorted())
+```
 
 ## Question 4
 
@@ -50,6 +96,19 @@ let arr1 = [2, 4, 5, 6, 8, 10, 12]
 let arr2 = [1, 2, 3, 4, 5, 6]
 let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
 let arr4 = [1, 3, 4, 5, 6, 7, 9]
+
+let set1: Set<Int> = Set(arr1)
+let set2: Set<Int> = Set(arr2)
+let set3: Set<Int> = Set(arr3)
+let set4: Set<Int> = Set(arr4)
+var combineSet: Set<Int> = set1.union(set2).union(set3).union(set4)
+var container: [Int] = []
+
+for i in combineSet {
+    container.append(i)
+    container = container.sorted()
+}
+print(container)
 ```
 
 
@@ -65,6 +124,17 @@ Perform the following set operations on the lists below:
 ```swift
 let list1: Set = [1, 3, 4, 6, 2, 7, 9]
 let list2: Set = [3, 7, 13, 10, 4]
+//1
+var intersection = list1.intersection(list2)
+print(intersection)
+//2
+var symmetricDifference = list1.symmetricDifference(list2)
+print(symmetricDifference)
+//3
+var union = list1.union(list2)
+print(union)
+//4
+Outcome = [9, 6, 2, 1]
 ```
 
 
@@ -84,12 +154,7 @@ print(spaceships.count)
 ```
 
 - 3
-- 4
-- Nothing will be output
-- 0
-- This code will not compile
-- 1
-- This code will compile but crash
+
 
 
 ## Question 7
@@ -112,8 +177,6 @@ if spaceships1.isSubset(of: spaceships2) {
 }
 ```
 
-- This code will compile but crash
-- "This is not a subset"
-- This code will not compile
+
 - "This is a subset"
-- Nothing will be output
+
